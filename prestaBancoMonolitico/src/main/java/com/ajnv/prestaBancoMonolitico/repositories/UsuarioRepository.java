@@ -10,7 +10,9 @@ import java.util.Optional;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Integer> {
-    @Query("SELECT u FROM usuarios where u.rut = :rut")
+
     UsuarioEntity findByRut(@Param("rut") String rut);
+
+    void deleteByRut(String rut);
 
 }
