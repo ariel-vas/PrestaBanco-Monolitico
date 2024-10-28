@@ -43,7 +43,7 @@ public class UsuarioController {
     ResponseEntity<String> deleteUsuario(@PathVariable String rutUsuario){
         usuarioService.deleteUsuario(rutUsuario);
         return new ResponseEntity<>(
-            "El usuario"+rutUsuario+"ha sido eliminado correctamente",
+            "El usuario "+rutUsuario+" ha sido eliminado correctamente",
                 HttpStatus.OK
         );
     }
