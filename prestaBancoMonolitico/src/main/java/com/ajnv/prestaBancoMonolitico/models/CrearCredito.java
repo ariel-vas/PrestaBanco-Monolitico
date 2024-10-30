@@ -8,12 +8,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class CrearCredito {
-    Integer id;
     String rut;
     String estado;
     Integer tipoPrestamo;
-    Integer plazoMaximo;
-    Double tasaIntMinima;
-    Double tasaIntMaxima;
-    Integer montoMaximo;
+    Integer plazo;
+    Double tasaInteres;
+    Integer monto;
 }

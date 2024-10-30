@@ -29,14 +29,54 @@ public class CreditoService {
     public CreditoEntity saveCredito(CrearCredito body){
         CreditoEntity nuevoCredito = new CreditoEntity();
 
-        nuevoCredito.setId(body.getId());
         nuevoCredito.setRut(body.getRut());
-        nuevoCredito.setEstado(body.getEstado());
-        nuevoCredito.setTipoPrestamo(body.getTipoPrestamo());
-        nuevoCredito.setPlazoMaximo(body.getPlazoMaximo());
-        nuevoCredito.setTasaIntMinima(body.getTasaIntMinima());
-        nuevoCredito.setTasaIntMaxima(body.getTasaIntMaxima());
-        nuevoCredito.setMontoMaximo(body.getMontoMaximo());
+        nuevoCredito.setEstado("En revisión inicial");
+        nuevoCredito.setPlazo(body.getPlazo());
+        nuevoCredito.setTasaInteres(body.getTasaInteres());
+        nuevoCredito.setMonto(body.getMonto());
+
+        Integer tp = body.getTipoPrestamo();
+        nuevoCredito.setTipoPrestamo(tp);
+        if(tp == 0){
+            nuevoCredito.setComprobanteIngresos(0);
+            nuevoCredito.setCertificadoAvaluo(2);
+            nuevoCredito.setHistorialCrediticio(2);
+            nuevoCredito.setEscrituraPrimeraVivienda(2);
+            nuevoCredito.setEstadoFinancieroNegocio(2);
+            nuevoCredito.setPlanNegocios(2);
+            nuevoCredito.setPresupuestoRemodelacion(0);
+            nuevoCredito.setCertificadoAvaluoActualizado(0);
+        }
+        if(tp == 1){
+            nuevoCredito.setComprobanteIngresos(0);
+            nuevoCredito.setCertificadoAvaluo(0);
+            nuevoCredito.setHistorialCrediticio(0);
+            nuevoCredito.setEscrituraPrimeraVivienda(2);
+            nuevoCredito.setEstadoFinancieroNegocio(2);
+            nuevoCredito.setPlanNegocios(2);
+            nuevoCredito.setPresupuestoRemodelacion(2);
+            nuevoCredito.setCertificadoAvaluoActualizado(2);
+        }
+        if(tp == 2){
+            nuevoCredito.setComprobanteIngresos(0);
+            nuevoCredito.setCertificadoAvaluo(0);
+            nuevoCredito.setHistorialCrediticio(0);
+            nuevoCredito.setEscrituraPrimeraVivienda(0);
+            nuevoCredito.setEstadoFinancieroNegocio(2);
+            nuevoCredito.setPlanNegocios(2);
+            nuevoCredito.setPresupuestoRemodelacion(2);
+            nuevoCredito.setCertificadoAvaluoActualizado(2);
+        }
+        if(tp == 3){
+            nuevoCredito.setComprobanteIngresos(0);
+            nuevoCredito.setCertificadoAvaluo(0);
+            nuevoCredito.setHistorialCrediticio(2);
+            nuevoCredito.setEscrituraPrimeraVivienda(2);
+            nuevoCredito.setEstadoFinancieroNegocio(0);
+            nuevoCredito.setPlanNegocios(0);
+            nuevoCredito.setPresupuestoRemodelacion(2);
+            nuevoCredito.setCertificadoAvaluoActualizado(2);
+        }
 
         return creditoRepository.save(nuevoCredito);
     }
@@ -62,17 +102,38 @@ public class CreditoService {
         if(nuevoCredito.getTipoPrestamo() != null){
             credito.setTipoPrestamo(nuevoCredito.getTipoPrestamo());
         }
-        if(nuevoCredito.getPlazoMaximo() != null){
-            credito.setPlazoMaximo(nuevoCredito.getPlazoMaximo());
+        if(nuevoCredito.getPlazo() != null){
+            credito.setPlazo(nuevoCredito.getPlazo());
         }
-        if(nuevoCredito.getTasaIntMinima() != null){
-            credito.setTasaIntMinima(nuevoCredito.getTasaIntMinima());
+        if(nuevoCredito.getTasaInteres() != null){
+            credito.setTasaInteres(nuevoCredito.getTasaInteres());
         }
-        if(nuevoCredito.getTasaIntMaxima() != null){
-            credito.setTasaIntMaxima(nuevoCredito.getTasaIntMaxima());
+        if(nuevoCredito.getMonto() != null){
+            credito.setMonto(nuevoCredito.getMonto());
         }
-        if(nuevoCredito.getMontoMaximo() != null){
-            credito.setMontoMaximo(nuevoCredito.getMontoMaximo());
+        if(nuevoCredito.getComprobanteIngresos() != null){
+            credito.setComprobanteIngresos(nuevoCredito.getComprobanteIngresos());
+        }
+        if(nuevoCredito.getCertificadoAvaluo() != null){
+            credito.setCertificadoAvaluo(nuevoCredito.getCertificadoAvaluo());
+        }
+        if(nuevoCredito.getHistorialCrediticio() != null){
+            credito.setHistorialCrediticio(nuevoCredito.getHistorialCrediticio());
+        }
+        if(nuevoCredito.getEscrituraPrimeraVivienda() != null){
+            credito.setEscrituraPrimeraVivienda(nuevoCredito.getEscrituraPrimeraVivienda());
+        }
+        if(nuevoCredito.getEstadoFinancieroNegocio() != null){
+            credito.setEstadoFinancieroNegocio(nuevoCredito.getEstadoFinancieroNegocio());
+        }
+        if(nuevoCredito.getPlanNegocios() != null){
+            credito.setPlanNegocios(nuevoCredito.getPlanNegocios());
+        }
+        if(nuevoCredito.getPresupuestoRemodelacion() != null){
+            credito.setPresupuestoRemodelacion(nuevoCredito.getPresupuestoRemodelacion());
+        }
+        if(nuevoCredito.getCertificadoAvaluoActualizado() != null){
+            credito.setCertificadoAvaluoActualizado(nuevoCredito.getCertificadoAvaluoActualizado());
         }
 
         return creditoRepository.save(credito);
